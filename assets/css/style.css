@@ -1,3 +1,6 @@
+/* =========================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================= */
 :root {
     --bg-color: #0d0814;          
     --card-bg: #160d24;           
@@ -10,6 +13,10 @@
     --btn-hover: #9333ea;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
@@ -19,6 +26,9 @@ body {
     line-height: 1.6;
 }
 
+/* =========================================
+   2. ESTRUTURA E COMPONENTES BÁSICOS
+   ========================================= */
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -27,7 +37,7 @@ body {
 
 section {
     margin-bottom: 80px;
-    scroll-margin-top: 100px;
+    scroll-margin-top: 100px; /* Ancoragem perfeita do menu */
 }
 
 h2 {
@@ -37,6 +47,62 @@ h2 {
     margin-bottom: 20px;
 }
 
+.btn {
+    background-color: var(--btn-bg);
+    color: #ffffff;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover);
+}
+
+/* =========================================
+   3. TELA DE LOADING (HACKER TERMINAL)
+   ========================================= */
+#hacker-loader {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background-color: #050308;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-terminal {
+    font-family: 'Fira Code', monospace, sans-serif;
+    color: #a395b8;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.loader-terminal p {
+    margin: 8px 0;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+/* =========================================
+   4. CABEÇALHO (HEADER E NAVEGAÇÃO)
+   ========================================= */
 header {
     padding: 1.5rem 5%;
     border-bottom: 1px solid var(--border-color);
@@ -61,18 +127,34 @@ nav a {
     text-decoration: none;
     margin-left: 20px;
     transition: color 0.3s ease;
+    position: relative;
 }
 
 nav a:hover {
     color: var(--accent-color);
 }
 
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-in-out;
+}
 
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================================
+   5. SEÇÃO PRINCIPAL (HERO)
+   ========================================= */
 .analyst {
     background-color: var(--bg-color); 
     background-image: none; 
-    
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,74 +173,6 @@ nav a:hover {
     max-width: 1000px;
     width: 100%;
     z-index: 2; 
-}
-
-
-.analyst::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background-image: 
-        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: 1;
-    pointer-events: none;
-    animation: moveGrid 15s linear infinite;
-    
-    
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
-}
-
-
-.analyst::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent-color);
-    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
-    z-index: 1;
-    pointer-events: none;
-    animation: scanLine 8s ease-in-out infinite;
-    
-    
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
-}
-
-
-@keyframes moveGrid {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        
-        transform: translate(-40px, -40px); 
-    }
-}
-
-@keyframes scanLine {
-    0% {
-        top: -10%;
-        opacity: 0;
-    }
-    15% {
-        opacity: 0.4; 
-    }
-    85% {
-        opacity: 0.4;
-    }
-    100% {
-        top: 110%; 
-        opacity: 0;
-    }
 }
 
 .hero-text {
@@ -212,28 +226,53 @@ nav a:hover {
     animation: morph 8s ease-in-out infinite;
 }
 
+/* Efeitos de Fundo da Hero (Grid e Scanner) */
+.analyst::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 200%; height: 200%;
+    background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1; pointer-events: none;
+    animation: moveGrid 15s linear infinite;
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+}
+
+.analyst::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
+    z-index: 1; pointer-events: none;
+    animation: scanLine 8s ease-in-out infinite;
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+}
+
+/* Keyframes (Animações) */
+@keyframes moveGrid {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-40px, -40px); }
+}
+@keyframes scanLine {
+    0% { top: -10%; opacity: 0; }
+    15% { opacity: 0.4; }
+    85% { opacity: 0.4; }
+    100% { top: 110%; opacity: 0; }
+}
 @keyframes morph {
     0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
     50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
     100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
 }
 
-
-.btn {
-    background-color: var(--btn-bg);
-    color: #ffffff;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-    display: inline-block;
-}
-
-.btn:hover {
-    background-color: var(--btn-hover);
-}
-
+/* =========================================
+   6. CARDS PADRÃO E GRID GENÉRICO
+   ========================================= */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -278,156 +317,14 @@ nav a:hover {
     color: #ffffff;
 }
 
-
-footer {
-    text-align: center;
-    padding: 40px;
-    border-top: 1px solid var(--border-color);
-    color: #8b949e;
-}
-
-.social-links a {
-    color: var(--accent-color);
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-}
-
-.social-links a:hover {
-    text-decoration: underline;
-}
-
-
-@media (max-width: 900px) {
-    .analyst {
-        justify-content: center;
-        background-position: center;
-    }
-    .hero-content {
-        flex-direction: column-reverse;
-        max-width: 90%;
-        text-align: center;
-        gap: 30px;
-    }
-    .hero-text {
-        text-align: center;
-    }
-    .qualidades {
-        justify-content: center;
-    }
-    
-@media (max-width: 900px) {
-   
-    header {
-        flex-direction: column;
-        padding: 1rem 15px 0.5rem 15px;
-        gap: 10px;
-    }
-
-    nav {
-        display: flex;
-        flex-wrap: nowrap; 
-        overflow-x: auto; 
-        justify-content: flex-start;
-        width: 100%;
-        padding-bottom: 8px;
-        -webkit-overflow-scrolling: touch; 
-    }
-
-
-    nav::-webkit-scrollbar {
-        height: 3px;
-    }
-    nav::-webkit-scrollbar-thumb {
-        background: var(--accent-color);
-        border-radius: 4px;
-    }
-
-    nav a {
-        white-space: nowrap;
-        margin-left: 15px;
-        font-size: 0.95rem;
-    }
-    
-    nav a:first-child {
-        margin-left: 0;
-    }
-
-    .hero-content {
-        flex-direction: column-reverse; 
-        gap: 30px;
-        padding: 20px 10px;
-    }
-    
-    .hero-text {
-        text-align: center;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.3rem; 
-    }
-    
-    .qualidades {
-        justify-content: center;
-    }
-    
-    .hero-photo img {
-        width: 260px;
-        height: 260px; 
-    }
-    .grid-palestras {
-        grid-template-columns: 1fr; /* Transforma em coluna única */
-    }
-    
-    .palestra-gallery {
-        grid-template-columns: 1fr; /* Empilha as fotos uma embaixo da outra */
-    }
-
-    .palestra-img-container {
-        height: 220px; /* Aumenta a foto no celular para melhor visualização */
-    }
-    html {
-    scroll-behavior: smooth;
-    }
-    #hacker-loader {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh;
-    background-color: #050308;
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-.loader-terminal {
-    font-family: 'Fira Code', monospace, sans-serif;
-    color: #a395b8;
-    font-size: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.loader-terminal p {
-    margin: 8px 0;
-}
-
-.blink {
-    animation: blinker 1s linear infinite;
-}
-
-@keyframes blinker {
-    50% { opacity: 0; }
-}
+/* =========================================
+   7. GRID ESPECÍFICO DE CERTIFICAÇÕES E PALESTRAS
+   ========================================= */
 .grid-palestras {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas idênticas */
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
-    align-items: stretch; /* Faz os dois cards terem a mesma altura */
+    align-items: stretch;
     width: 100%;
 }
 
@@ -437,7 +334,7 @@ footer {
     border-radius: 12px;
     padding: 25px;
     display: flex;
-    flex-direction: column; /* Permite empurrar a galeria pro fundo */
+    flex-direction: column;
 }
 
 .card-box h3 {
@@ -448,24 +345,23 @@ footer {
 .card-box ul {
     margin-bottom: 20px;
     padding-left: 20px;
-    flex-grow: 1; /* Preenche o espaço vazio para empurrar as fotos para baixo */
+    flex-grow: 1;
 }
 
 .card-box li {
     margin-bottom: 12px;
 }
 
-/* Regras da Galeria */
 .palestra-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas fotos lado a lado */
+    grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin-top: auto; /* Força a galeria a ficar encostada no final do card */
+    margin-top: auto;
 }
 
 .palestra-img-container {
     width: 100%;
-    height: 160px; /* Trava a altura rigorosamente */
+    height: 160px;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border-color);
@@ -474,7 +370,7 @@ footer {
 .img-palestra {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz o recorte perfeito sem achatar */
+    object-fit: cover;
     display: block;
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: grayscale(20%);
@@ -484,41 +380,15 @@ footer {
     transform: scale(1.05);
     filter: grayscale(0%);
 }
-section {
-    scroll-margin-top: 100px; 
-}
-
-/* 2. Efeito Imersivo no Menu do Topo */
-nav a {
-    position: relative;
-    text-decoration: none;
-}
-
-/* Cria uma linha roxa escondida debaixo do link */
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease-in-out;
-}
-
-/* Ao passar o mouse, a linha se expande do centro para as bordas */
-nav a:hover::after {
-    width: 100%;
-}
 
 /* =========================================
-   ESTILO DO NOVO RODAPÉ
+   8. RODAPÉ (TERMINAL)
    ========================================= */
 footer {
-    background-color: #050308; /* Fundo mais escuro para simular o terminal */
+    background-color: #050308;
     border-top: 1px solid var(--border-color);
     padding: 60px 5% 40px 5%;
-    text-align: center; /* Centraliza tudo */
+    text-align: center;
 }
 
 .footer-terminal {
@@ -533,7 +403,7 @@ footer {
 .footer-terminal h2 {
     color: var(--accent-color);
     margin: 0;
-    font-family: 'Fira Code', monospace; /* Fonte com estilo de código */
+    font-family: 'Fira Code', monospace;
 }
 
 .footer-terminal p {
@@ -541,7 +411,6 @@ footer {
     margin-bottom: 15px;
 }
 
-/* Botões estilo linha de comando */
 .terminal-links {
     display: flex;
     gap: 20px;
@@ -562,7 +431,7 @@ footer {
 
 .btn-term:hover {
     color: var(--accent-color);
-    border: 1px dashed var(--accent-color); /* Cria uma borda tracejada roxa ao passar o mouse */
+    border: 1px dashed var(--accent-color);
     background-color: rgba(177, 77, 255, 0.05);
 }
 
@@ -578,5 +447,87 @@ footer {
     margin: 5px 0;
     font-family: 'Fira Code', monospace;
 }
-}
+
+/* =========================================
+   9. RESPONSIVIDADE (CELULARES)
+   ========================================= */
+@media (max-width: 900px) {
+    /* Menu */
+    header {
+        flex-direction: column;
+        padding: 1rem 15px 0.5rem 15px;
+        gap: 10px;
+    }
+    
+    nav {
+        display: flex;
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        justify-content: flex-start;
+        width: 100%;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch; 
+    }
+    
+    nav::-webkit-scrollbar {
+        height: 3px;
+    }
+    nav::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 4px;
+    }
+    
+    nav a {
+        white-space: nowrap;
+        margin-left: 15px;
+        font-size: 0.95rem;
+    }
+    
+    nav a:first-child {
+        margin-left: 0;
+    }
+
+    /* Hero Principal */
+    .analyst {
+        justify-content: center;
+        background-position: center;
+    }
+    
+    .hero-content {
+        flex-direction: column-reverse; 
+        gap: 30px;
+        padding: 20px 10px;
+        max-width: 90%;
+        text-align: center;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.3rem; 
+    }
+    
+    .qualidades {
+        justify-content: center;
+    }
+    
+    .hero-photo img {
+        width: 260px;
+        height: 260px; 
+    }
+
+    /* Palestras e Galeria */
+    .grid-palestras {
+        grid-template-columns: 1fr; 
+    }
+    
+    .palestra-gallery {
+        grid-template-columns: 1fr; 
+    }
+    
+    .palestra-img-container {
+        height: 220px; 
+    }
 }
