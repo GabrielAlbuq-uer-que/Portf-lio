@@ -515,78 +515,68 @@ nav a:hover::after {
    ESTILO DO NOVO RODAPÉ
    ========================================= */
 footer {
-    background-color: #08050d; /* Fundo sutilmente mais escuro que a página */
+    background-color: #050308; /* Fundo mais escuro para simular o terminal */
     border-top: 1px solid var(--border-color);
-    padding: 60px 5% 20px 5%;
+    padding: 60px 5% 40px 5%;
+    text-align: center; /* Centraliza tudo */
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Permite quebrar linha no celular */
-    gap: 30px;
-    max-width: 1000px;
+.footer-terminal {
+    max-width: 800px;
     margin: 0 auto;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 40px;
-}
-
-.footer-info h2 {
-    margin-top: 0;
-    color: var(--accent-color);
-}
-
-.footer-info p {
-    max-width: 400px;
-    margin-bottom: 8px;
-    color: #a395b8;
-}
-
-/* Estilo dos Botões de Contato (Cyber Links) */
-.footer-links {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.cyber-link {
-    padding: 10px 24px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+.footer-terminal h2 {
+    color: var(--accent-color);
+    margin: 0;
+    font-family: 'Fira Code', monospace; /* Fonte com estilo de código */
+}
+
+.footer-terminal p {
+    color: #a395b8;
+    margin-bottom: 15px;
+}
+
+/* Botões estilo linha de comando */
+.terminal-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.btn-term {
+    font-family: 'Fira Code', monospace;
     color: #fff;
     text-decoration: none;
-    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border: 1px dashed transparent;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.02);
 }
 
-.cyber-link:hover {
-    border-color: var(--accent-color);
+.btn-term:hover {
     color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(177, 77, 255, 0.2); /* Brilho neon ao passar o mouse */
-    transform: translateY(-3px); /* Botão "pula" levemente */
+    border: 1px dashed var(--accent-color); /* Cria uma borda tracejada roxa ao passar o mouse */
+    background-color: rgba(177, 77, 255, 0.05);
 }
 
-.footer-bottom {
-    text-align: center;
+.sys-info {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding-top: 20px;
-    font-size: 0.85rem;
-    color: #666;
+    width: 100%;
 }
 
-/* Ajuste do rodapé para o Celular */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-info p {
-        margin: 0 auto 10px auto;
-    }
-    .footer-links {
-        justify-content: center;
-    }
+.sys-info p {
+    font-size: 0.85rem;
+    color: #555;
+    margin: 5px 0;
+    font-family: 'Fira Code', monospace;
 }
 }
 }
