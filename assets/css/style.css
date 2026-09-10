@@ -67,29 +67,101 @@ nav a:hover {
     color: var(--accent-color);
 }
 
+
 .analyst {
-    background-image: url('../img/wallpaper.png');
-    background-size: cover;
-    background-position: center left;
-    background-repeat: no-repeat;
+    background-color: var(--bg-color); 
+    background-image: none; 
+    
+
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     min-height: 85vh;
-    padding: 0 10%;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
     border-bottom: 1px solid var(--border-color);
 }
 
 .hero-content {
     display: flex;
     align-items: center;
-    gap: 50px;
-    max-width: 65%;
-    background: rgba(13, 8, 20, 0.4);
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(177, 77, 255, 0.15);
+    justify-content: center;
+    gap: 60px;
+    max-width: 1000px;
+    width: 100%;
+    z-index: 2; 
+}
+
+/* --- EFEITOS DE TECNOLOGIA E MOVIMENTO NO FUNDO --- */
+
+/* 1. Malha Digital (Grid) em movimento */
+/* 1. Malha Digital (Grid) nas laterais */
+.analyst::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+    pointer-events: none;
+    animation: moveGrid 15s linear infinite;
+    
+    /* O SEGREDO: Máscara que apaga o centro e deixa apenas 20% das bordas visíveis */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+}
+
+/* 2. Linha de Scanner nas laterais */
+.analyst::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
+    z-index: 1;
+    pointer-events: none;
+    animation: scanLine 8s ease-in-out infinite;
+    
+    /* Mesma máscara para o scanner sumir no meio */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+}
+
+/* 3. A Regra das Animações (Keyframes) */
+@keyframes moveGrid {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        /* Move o grid levemente para cima e para a esquerda continuamente */
+        transform: translate(-40px, -40px); 
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        top: -10%;
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.4; /* A linha acende */
+    }
+    85% {
+        opacity: 0.4;
+    }
+    100% {
+        top: 110%; /* A linha desce até sumir */
+        opacity: 0;
+    }
 }
 
 .hero-text {
@@ -246,46 +318,68 @@ footer {
     .qualidades {
         justify-content: center;
     }
-
-@media (max-width: 768px) {
-    header{
+    /* =========================================
+   7. RESPONSIVIDADE (CELULARES E TABLETS)
+   ========================================= */
+@media (max-width: 900px) {
+    /* Menu Compacto e Deslizável */
+    header {
         flex-direction: column;
-        text-align: center;
-        gap: 15px;
-        padding: 1rem 5%;
+        padding: 1rem 15px 0.5rem 15px; /* Reduz bastante a altura do topo */
+        gap: 10px;
     }
 
-    nav{
+    nav {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
+        flex-wrap: nowrap; /* Impede de empilhar as palavras */
+        overflow-x: auto; /* Permite arrastar para os lados no touch */
+        justify-content: flex-start;
+        width: 100%;
+        padding-bottom: 8px; /* Espaço pro dedo deslizar */
+        -webkit-overflow-scrolling: touch; /* Deixa o deslizar macio no iOS */
     }
-    nav a{
+
+    /* Estilo sutil da barra de rolagem no menu */
+    nav::-webkit-scrollbar {
+        height: 3px;
+    }
+    nav::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 4px;
+    }
+
+    nav a {
+        white-space: nowrap; /* Não quebra os nomes (ex: Habilidades e Certificações fica em 1 linha) */
+        margin-left: 15px;
+        font-size: 0.95rem;
+    }
+    
+    nav a:first-child {
         margin-left: 0;
-        font-size: 0.9rem;
-    }
-    .hero-text h1 {
-        font-size: 2.2rem; /* Reduz a fonte principal no celular */
-        word-wrap: break-word; /* Força a quebra da palavra se for maior que a tela */
-        hyphens: auto;
     }
 
-    .hero-text h3 {
-        font-size: 1.2rem;
-    }
-
-    /* 3. Ajuste de Espaçamento da Caixa de Vidro */
+    /* Organização da Foto e Texto no Celular */
     .hero-content {
-        padding: 20px; /* Reduz o preenchimento interno para dar mais espaço ao texto */
-        max-width: 95%; /* Permite que a caixa ocupe quase toda a largura */
-        gap: 20px;
+        flex-direction: column-reverse; /* Foto sobe, texto desce */
+        gap: 30px;
+        padding: 20px 10px;
     }
-
-    /* 4. Ajuste da Foto Animada no Celular */
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.3rem; /* Fonte menor para caber na tela sem vazar */
+    }
+    
+    .qualidades {
+        justify-content: center;
+    }
+    
     .hero-photo img {
-        width: 250px; /* Reduz a foto para não tomar a tela inteira */
-        height: 290px;
+        width: 260px;
+        height: 260px; /* Imagem mais compacta pro celular */
     }
 }
 }
