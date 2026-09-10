@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+   <style>
+        #hacker-loader {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #050308;
+            z-index: 99999;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .loader-terminal {
+            font-family: 'Fira Code', monospace, sans-serif;
+            color: #a395b8; font-size: 1.2rem;
+            display: flex; flex-direction: column; align-items: flex-start;
+        }
+        .loader-terminal p { margin: 8px 0; }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+
+    <div id="hacker-loader">
+        <div class="loader-terminal" id="terminal-text"></div>
+    </div>
 
     <header>
         <div class="logo">Gabriel Albuquerque | Analista de Cibersegurança</div>
@@ -46,7 +68,7 @@
     </section>
 
     <div class="container">
-        <section id="sobre">
+        <section id="sobre" class="reveal">
             <h2>Sobre Mim</h2>
             <p>Estudante de Sistemas de Informação atuante em monitoramento de segurança e suporte de infraestrutura. Tenho foco na integração entre a automação de processos operacionais e a defesa ativa de redes, unindo a visão técnica de desenvolvimento com a eficiência exigida em um centro de operações de segurança.</p>
             
@@ -59,7 +81,7 @@
             </div>
         </section>
 
-        <section id="projetos">
+        <section id="projetos" class="reveal">
             <h2>Projetos e Materiais</h2>
             <div class="grid">
                 
@@ -89,7 +111,7 @@
 
         <section id="habilidades">
             <h2>Habilidades Técnicas</h2>
-            <div class="grid>
+            <div class="grid">
                 <div class="card">
                     <h3>Segurança e Monitoramento (SOC)</h3>
                     <p>Operação de SIEM (Wazuh), Análise de Logs, Gestão de Vulnerabilidades, Threat Hunting e Resposta a Incidentes.</p>
@@ -113,6 +135,6 @@
             <a href="" target="_blank">GitHub</a>  
         </p>
     </footer>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/1main.js"></script>
 </body>
 </html>

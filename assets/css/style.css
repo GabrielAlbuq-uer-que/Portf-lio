@@ -27,7 +27,7 @@ body {
 
 section {
     margin-bottom: 80px;
-    scroll-margin-top: 100px; /* Impede que o menu cubra o título ao rolar a página */
+    scroll-margin-top: 100px;
 }
 
 h2 {
@@ -93,10 +93,7 @@ nav a:hover {
     z-index: 2; 
 }
 
-/* --- EFEITOS DE TECNOLOGIA E MOVIMENTO NO FUNDO --- */
 
-/* 1. Malha Digital (Grid) em movimento */
-/* 1. Malha Digital (Grid) nas laterais */
 .analyst::before {
     content: "";
     position: absolute;
@@ -112,12 +109,12 @@ nav a:hover {
     pointer-events: none;
     animation: moveGrid 15s linear infinite;
     
-    /* O SEGREDO: Máscara que apaga o centro e deixa apenas 20% das bordas visíveis */
+    
     -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
     mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
 }
 
-/* 2. Linha de Scanner nas laterais */
+
 .analyst::after {
     content: "";
     position: absolute;
@@ -131,7 +128,7 @@ nav a:hover {
     pointer-events: none;
     animation: scanLine 8s ease-in-out infinite;
     
-    /* Mesma máscara para o scanner sumir no meio */
+    
     -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
     mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
 }
@@ -142,7 +139,7 @@ nav a:hover {
         transform: translate(0, 0);
     }
     100% {
-        /* Move o grid levemente para cima e para a esquerda continuamente */
+        
         transform: translate(-40px, -40px); 
     }
 }
@@ -153,13 +150,13 @@ nav a:hover {
         opacity: 0;
     }
     15% {
-        opacity: 0.4; /* A linha acende */
+        opacity: 0.4; 
     }
     85% {
         opacity: 0.4;
     }
     100% {
-        top: 110%; /* A linha desce até sumir */
+        top: 110%; 
         opacity: 0;
     }
 }
@@ -318,28 +315,26 @@ footer {
     .qualidades {
         justify-content: center;
     }
-    /* =========================================
-   7. RESPONSIVIDADE (CELULARES E TABLETS)
-   ========================================= */
+    
 @media (max-width: 900px) {
-    /* Menu Compacto e Deslizável */
+   
     header {
         flex-direction: column;
-        padding: 1rem 15px 0.5rem 15px; /* Reduz bastante a altura do topo */
+        padding: 1rem 15px 0.5rem 15px;
         gap: 10px;
     }
 
     nav {
         display: flex;
-        flex-wrap: nowrap; /* Impede de empilhar as palavras */
-        overflow-x: auto; /* Permite arrastar para os lados no touch */
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
         justify-content: flex-start;
         width: 100%;
-        padding-bottom: 8px; /* Espaço pro dedo deslizar */
-        -webkit-overflow-scrolling: touch; /* Deixa o deslizar macio no iOS */
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch; 
     }
 
-    /* Estilo sutil da barra de rolagem no menu */
+
     nav::-webkit-scrollbar {
         height: 3px;
     }
@@ -349,7 +344,7 @@ footer {
     }
 
     nav a {
-        white-space: nowrap; /* Não quebra os nomes (ex: Habilidades e Certificações fica em 1 linha) */
+        white-space: nowrap;
         margin-left: 15px;
         font-size: 0.95rem;
     }
@@ -358,9 +353,8 @@ footer {
         margin-left: 0;
     }
 
-    /* Organização da Foto e Texto no Celular */
     .hero-content {
-        flex-direction: column-reverse; /* Foto sobe, texto desce */
+        flex-direction: column-reverse; 
         gap: 30px;
         padding: 20px 10px;
     }
@@ -370,7 +364,7 @@ footer {
     }
     
     .hero-text h1 {
-        font-size: 2.3rem; /* Fonte menor para caber na tela sem vazar */
+        font-size: 2.3rem; 
     }
     
     .qualidades {
@@ -379,7 +373,44 @@ footer {
     
     .hero-photo img {
         width: 260px;
-        height: 260px; /* Imagem mais compacta pro celular */
+        height: 260px; 
     }
+    html {
+    scroll-behavior: smooth;
+    }
+    #hacker-loader {
+    position: fixed; /* Fixa por cima da tela */
+    top: 0; 
+    left: 0; 
+    width: 100vw; /* 100% da largura da tela */
+    height: 100vh; /* 100% da altura da tela */
+    background-color: #050308; /* Fundo escuro */
+    z-index: 99999; /* Garante que fique na frente de todos os outros elementos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-terminal {
+    font-family: 'Fira Code', monospace, sans-serif;
+    color: #a395b8;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.loader-terminal p {
+    margin: 8px 0;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
 }
 }
