@@ -34,6 +34,7 @@
         <div class="logo">Gabriel Albuquerque | Analista de Cibersegurança</div>
         <nav>
             <a href="#sobre">Sobre</a>
+            <a href="#experiencia">Experiência</a>
             <a href="#projetos">Projetos</a>
             <a href="#habilidades">Habilidades e Certificações</a>
             <a href="#palestras">Palestras e Cursos</a>
@@ -42,14 +43,14 @@
     </header>
     
     <section class="analyst" id="inicio">
-        <!-- Esta div engloba tudo e joga para a direita da tela -->
+        
         <div class="hero-content">
             
             <div class="hero-text">
                 <h1>Analista de<br>Cibersegurança</h1>
                 <h3>Gabriel Albuquerque Bentes</h3>
                 
-                <!-- Qualidades organizadas em formato de tags -->
+                
                 <div class="qualidades">
                     <span>SOC N2</span>
                     <span>Suporte N1</span>
@@ -60,7 +61,7 @@
             </div>
 
             <div class="hero-photo">
-                <!-- Aqui entra a sua foto isolada -->
+                
                 <img src="assets/img/gabriel-foto.jpg" alt="Gabriel palestrando">
             </div>
 
@@ -69,17 +70,36 @@
 
     <div class="container">
         <section id="sobre" class="reveal">
-            <h2>Sobre Mim</h2>
-            <p>Estudante de Sistemas de Informação atuante em monitoramento de segurança e suporte de infraestrutura. Tenho foco na integração entre a automação de processos operacionais e a defesa ativa de redes, unindo a visão técnica de desenvolvimento com a eficiência exigida em um centro de operações de segurança.</p>
+            <h2>/> Sobre Mim</h2>
+            <p>Sou um Analista de Segurança da Informação focado em operações de Security Operations Center (SOC) e resposta a incidentes (DFIR). Atualmente cursando Sistemas de Informação (noturno) na Universidade Federal Rural da Amazônia (UFRA), combino a visão analítica do monitoramento contínuo com o desenvolvimento de automações para defesa ativa.</p>
+            <p>Minha especialidade envolve a correlação avançada de logs em plataformas SIEM (Wazuh) e EDR/XDR, além da gestão de infraestruturas seguras utilizando tecnologias Fortinet e Microsoft Azure.</p>
+        </section>
+
+        <section id="experiencia" class="reveal">
+            <h2>/> Experiência Profissional</h2>
             
-            <div class="certifications">
-                <h3>Em Preparação / Estudos Atuais</h3>
+            <div class="certifications" style="border-left: 4px solid var(--accent-color); margin-bottom: 20px;">
+                <h3>Analista de SOC N2 / Suporte Júnior N1 | SOLUS IT</h3>
+                <p style="color: var(--accent-color); font-weight: bold; margin-top: -10px;"><small>12/2025 - Atual</small></p>
                 <ul>
-                    <li>SYCP</li>
-                    <li>CompTIA Security+</li>
+                    <li>Monitoramento em tempo real e triagem de alertas críticos utilizando o SIEM Wazuh e EDR Trend Vision One[cite: 1].</li>
+                    <li>Investigação profunda (deep dive) e contenção de incidentes envolvendo malwares e campanhas de phishing[cite: 1].</li>
+                    <li>Administração e troubleshooting avançado de regras em Firewalls FortiGate, VPNs e Active Directory[cite: 1].</li>
+                    <li>Elaboração de Runbooks e relatórios técnicos pós-incidente[cite: 1].</li>
+                </ul>
+            </div>
+
+            <div class="certifications" style="border-left: 4px solid #5c4d7d; margin-bottom: 20px;">
+                <h3>Estagiário de TI | COSANPA</h3>
+                <p style="color: #5c4d7d; font-weight: bold; margin-top: -10px;"><small>07/2025 - 12/2025</small></p>
+                <ul>
+                    <li>Monitoramento proativo de infraestrutura corporativa através do Zabbix[cite: 1].</li>
+                    <li>Varreduras de vulnerabilidades com Tenable e mapeamento de correlações com CVEs vigentes[cite: 1].</li>
+                    <li>Desenvolvimento de scripts de automação em Python e Bash para otimização de coleta de telemetria[cite: 1].</li>
                 </ul>
             </div>
         </section>
+
 
         <section id="projetos" class="reveal">
             <h2>Projetos e Materiais</h2>
@@ -109,31 +129,86 @@
             </div>
         </section>
 
-        <section id="habilidades">
-            <h2>Habilidades Técnicas</h2>
+        <section id="habilidades" class="reveal">
+            <h2>/> Habilidades Técnicas</h2>
             <div class="grid">
+                
                 <div class="card">
-                    <h3>Segurança e Monitoramento (SOC)</h3>
-                    <p>Operação de SIEM (Wazuh), Análise de Logs, Gestão de Vulnerabilidades, Threat Hunting e Resposta a Incidentes.</p>
+                    <h3>Cybersecurity & SOC</h3>
+                    <p>Operação de SIEM (Wazuh) e XDR (Trend Vision One, Kaspersky)[cite: 1]. Triagem de alertas, Resposta a Incidentes (DFIR), Malware Analysis e alinhamento tático aos frameworks MITRE ATT&CK e NIST[cite: 1].</p>
                 </div>
+                
                 <div class="card">
-                    <h3>Infraestrutura e Redes</h3>
-                    <p>Configuração e gestão de firewall (FortiGate), implementação de VPNs/VLANs, Roteamento e administração de Active Directory.</p>
+                    <h3>Segurança de Perímetro e Nuvem</h3>
+                    <p>Administração de FortiGate NGFW (Regras, VPN, WAF, IDS/IPS) e arquitetura segura em Microsoft Azure baseada no Cloud Adoption Framework (CAF)[cite: 1].</p>
                 </div>
+                
                 <div class="card">
-                    <h3>Automação e DevSecOps</h3>
-                    <p>Desenvolvimento de scripts em Python (Pandas) e Shell Script para automação de rotinas de backup, coleta de dados e deploy com Docker.</p>
+                    <h3>Automação & Hardening</h3>
+                    <p>Criação de ferramentas defensivas em Python e Shell Script[cite: 1]. Hardening de servidores Windows/Linux, gestão de Active Directory e análise profunda de logs de endpoints[cite: 1].</p>
                 </div>
+
+            </div>
+        </section>
+        <section id="palestras" class="reveal">
+            <h2>/> Certificações, Palestras e Cursos</h2>
+            
+            <!-- Usando uma nova classe exclusiva para não conflitar com outras seções -->
+            <div class="grid-palestras">
+                
+                <!-- Coluna 1: Certificações -->
+                <div class="card-box">
+                    <h3>Badges e Certificações</h3>
+                    <ul>
+                        <li><strong>Fortinet:</strong> FortiGate 7.6 Operator, FCA, FCF.</li>
+                        <li><strong>Trend Micro:</strong> Vision One CREM (Advanced e Practitioner).</li>
+                        <li><strong>Trend Micro:</strong> Vision One Endpoint (Practitioner).</li>
+                        <li><strong>Microsoft Azure:</strong> Design Security Solutions (CAF/WAF).</li>
+                        <li><strong>Palo Alto Networks:</strong> Cybersecurity Fundamentals.</li>
+                        <li><strong>Solyd Offensive Security:</strong> Pentest em Redes e Dominando Linux.</li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 2: Palestras e Galeria -->
+                <div class="card-box">
+                    <h3>Atuações e Palestras</h3>
+                    <ul>
+                        <li><strong>Palestra: DEV / SEC / IA </strong><br>
+                        <em>Apresentação interativa desenvolvida para calouros da universidade, simpatizantes e profissioanis técnicos, demonstrando a realidade dos ambientes de DEVOPS, Segurança Cibernética e infraestrutura de Redes, com metodologias atuais e voltado ao reconhecimento das diversas áreas.</li>
+                    </ul>
+                    
+                    <!-- Galeria de Imagens -->
+                    <div class="palestra-gallery">
+                        <div class="palestra-img-container">
+                            <img src="assets/img/palestra.jfif" alt="Equipe organizadora" class="img-palestra">
+                        </div>
+                        <div class="palestra-img-container">
+                            <img src="assets/img/palestra2.jfif" alt="Turma de calouros" class="img-palestra">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>
-    <footer id="contato">
-        <p>Vamos ampliar a rede?</p>
-        <p>Belém, PA - Brasil</p>
-        <p class="social-links">
-            <a href="https://www.linkedin.com/in/gabriel-albuquerque-bentes-b517a4353/" target="_blank">LinkedIn</a>
-            <a href="" target="_blank">GitHub</a>  
-        </p>
+   <footer id="contato" class="reveal">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h2>/> Conexão_</h2>
+                <p>Pronto para proteger infraestruturas ou trocar ideias sobre defesa ativa? Vamos ampliar nossa rede.</p>
+                <p><small>📍 Belém, PA - Brasil</small></p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="mailto:bentesgabrielalbuquerque@gmail.com" class="cyber-link">Email</a>
+                <a href="https://www.linkedin.com/in/gabriel-albuquerque-bentes-b517a4353/" target="_blank" class="cyber-link">LinkedIn</a>
+                <a href="" target="_blank" class="cyber-link">GitHub</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gabriel Albuquerque Bentes. Todos os direitos reservados. | Desenvolvido com <span style="color: var(--accent-color);">♥</span> e código.</p>
+        </div>
     </footer>
     <script src="assets/js/main.js"></script>
 </body>
