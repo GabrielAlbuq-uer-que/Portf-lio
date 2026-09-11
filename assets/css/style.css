@@ -63,7 +63,7 @@ h2 {
 }
 
 /* =========================================
-   3. TELA DE LOADING (HACKER TERMINAL)
+   3. TELA DE LOADING 
    ========================================= */
 #hacker-loader {
     position: fixed; 
@@ -101,7 +101,7 @@ h2 {
 }
 
 /* =========================================
-   4. CABEÇALHO (HEADER E NAVEGAÇÃO)
+   4. CABEÇALHO
    ========================================= */
 header {
     padding: 1.5rem 5%;
@@ -150,7 +150,7 @@ nav a:hover::after {
 }
 
 /* =========================================
-   5. SEÇÃO PRINCIPAL (HERO)
+   5. SEÇÃO PRINCIPAL
    ========================================= */
 .analyst {
     background-color: var(--bg-color); 
@@ -382,7 +382,7 @@ nav a:hover::after {
 }
 
 /* =========================================
-   8. RODAPÉ (TERMINAL)
+   8. RODAPÉ
    ========================================= */
 footer {
     background-color: #050308;
@@ -449,40 +449,52 @@ footer {
 }
 
 /* =========================================
-   9. RESPONSIVIDADE (CELULARES)
+   9.CELULARES
    ========================================= */
 @media (max-width: 900px) {
     /* Menu */
     header {
         flex-direction: column;
-        padding: 1rem 15px 0.5rem 15px;
-        gap: 10px;
+        align-items: flex-start;
+        padding: 12px 16px;
+        gap: 12px;
+    }
+    .logo {
+        font-size: 1rem;
+        line-height: 1.3;
+        width: 100%;
     }
     
     nav {
         display: flex;
-        flex-wrap: nowrap; 
-        overflow-x: auto; 
+        flex-wrap: nowrap;
+        overflow-x: auto;
         justify-content: flex-start;
         width: 100%;
-        padding-bottom: 8px;
-        -webkit-overflow-scrolling: touch; 
+        padding-bottom: 6px;
+        gap: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Esconde a barra feia no Firefox */
     }
     
-    nav::-webkit-scrollbar {
-        height: 3px;
+   nav::-webkit-scrollbar {
+        display: none;
     }
     nav::-webkit-scrollbar-thumb {
         background: var(--accent-color);
         border-radius: 4px;
     }
     
-    nav a {
+   nav a {
         white-space: nowrap;
-        margin-left: 15px;
-        font-size: 0.95rem;
+        margin-left: 0; /* O espaçamento agora é controlado pelo gap */
+        font-size: 0.85rem;
+        padding-bottom: 4px;
+        flex-shrink: 0; /* Impede os textos de encolherem */
     }
-    
+    nav a:last-child {
+        padding-right: 16px;
+    }
     nav a:first-child {
         margin-left: 0;
     }
