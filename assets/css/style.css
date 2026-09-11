@@ -37,7 +37,7 @@ body {
 
 section {
     margin-bottom: 80px;
-    scroll-margin-top: 100px; /* Ancoragem perfeita do menu */
+    scroll-margin-top: 100px; 
 }
 
 h2 {
@@ -474,7 +474,7 @@ footer {
         padding-bottom: 6px;
         gap: 16px;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Esconde a barra feia no Firefox */
+        scrollbar-width: none;
     }
     
    nav::-webkit-scrollbar {
@@ -487,10 +487,10 @@ footer {
     
    nav a {
         white-space: nowrap;
-        margin-left: 0; /* O espaçamento agora é controlado pelo gap */
+        margin-left: 0; 
         font-size: 0.85rem;
         padding-bottom: 4px;
-        flex-shrink: 0; /* Impede os textos de encolherem */
+        flex-shrink: 0; 
     }
     nav a:last-child {
         padding-right: 16px;
